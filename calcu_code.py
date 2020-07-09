@@ -8,7 +8,8 @@ window.configure(bg="#282828")
 # escreen = Entry(window, width=35)
 # escreen.grid(row=0, column=0, columnspan=3, padx=20, pady=10)
 
-Text_dis = Text(window, width=40,height=10).place(x=0,y=12)
+Text_dis = Text(window, width=35,height=5).place(x=15,y=12)
+Text_result=Text(window, width=35,height=5,).place(x=15,y=99)
 
 
 
