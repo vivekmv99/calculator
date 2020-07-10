@@ -8,12 +8,13 @@ window.title("Calculator")
 window.geometry('320x480')
 window.configure(bg="#282828")
 
-# escreen = Entry(window, width=35)
-# escreen.grid(row=0, column=0, columnspan=3, padx=20, pady=10)
 
-Text_dis = Text(window, width=35,height=5).place(x=15,y=12)
-Text_result=Text(window, width=35,height=5,).place(x=15,y=99)
+# Text_dis = Text(window, width=35,height=5).place(x=15,y=12)
+# Text_result=Text(window, width=35,height=5,).place(x=15,y=99)
 
+myfont_screen = Font(family="verdana",size="40")
+dis_entry = Entry(window,width=8,font=myfont_screen)
+dis_entry.place(x=20,y=30)
 
 
 def hello():
