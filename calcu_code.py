@@ -16,7 +16,8 @@ myfont_screen = Font(family="verdana",size="40")
 dis_entry = Entry(window,width=8,font=myfont_screen)
 dis_entry.place(x=20,y=30)
 
-
+dis_result = Entry(window,width=8,font=myfont_screen)
+dis_result.place(x=20,y=105)
 def hello():
     print("hai")
 
