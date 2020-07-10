@@ -23,6 +23,9 @@ dis_result.place(x=20,y=105)
 def button_click(number):
     dis_entry.insert(0,number)
 
+def button_del():
+    dis_entry.delete(0,END)
+
 
 def hello():
     print("hai")
@@ -49,7 +52,7 @@ Button(window, text=" 2 ", height=3,width=7,bg="gray46",fg="black",font=myfont,c
 Button(window, text=" 3 ", height=3,width=7,bg="gray46",fg="black",font=myfont,command=lambda:button_click(3)).place(x=160,y=367)
 Button(window, text=" 0 ", height=2,width=6,bg="gray46",fg="black",font=myfont,command=lambda:button_click(0)).place(x=10,y=424)
 Button(window, text=" . ", height=2,width=7,bg="gray46",fg="black",font=myfont).place(x=80,y=424)
-Button(window, text=" del ",height=2,width=7,bg="orange red",fg="black",font=myfont).place(x=160,y=424)
+Button(window, text=" del ",height=2,width=7,bg="orange red",fg="black",font=myfont,command=button_del).place(x=160,y=424)
 Button(window, text=" = ", height=5,width=6,bg="gold",fg="black",font=myfont).place(x=240,y=369)
 
 mainloop()
