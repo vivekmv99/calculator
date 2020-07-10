@@ -13,7 +13,7 @@ window.configure(bg="#282828")
 # Text_result=Text(window, width=35,height=5,).place(x=15,y=99)
 
 myfont_screen = Font(family="verdana",size="40")
-dis_entry = Entry(window,width=8,font=myfont_screen)
+dis_entry = Entry(window,width=8,font=myfont_screen,justify=RIGHT)
 dis_entry.place(x=20,y=30)
 
 dis_result = Entry(window,width=8,font=myfont_screen)
@@ -21,7 +21,9 @@ dis_result.place(x=20,y=105)
 
 
 def button_click(number):
-    dis_entry.insert(0,number)
+    num = dis_entry.get()
+    dis_entry.delete(0,END)
+    dis_entry.insert(0,str(num) + str(number))
 
 def button_del():
     dis_entry.delete(0,END)
