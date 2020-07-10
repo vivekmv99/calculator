@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter.font import *
+from tkinter import messagebox
 
 
 
@@ -8,9 +9,9 @@ window.title("Calculator")
 window.geometry('320x480')
 window.configure(bg="#282828")
 
+info_menu = Menu(window)
+window.config(menu=info_menu)
 
-# Text_dis = Text(window, width=35,height=5).place(x=15,y=12)
-# Text_result=Text(window, width=35,height=5,).place(x=15,y=99)
 
 myfont_screen = Font(family="verdana",size="40")
 dis_entry = Entry(window,width=8,font=myfont_screen,justify=RIGHT)
@@ -19,6 +20,22 @@ dis_entry.place(x=20,y=30)
 dis_result = Entry(window,width=8,font=myfont_screen,justify=RIGHT)
 dis_result.place(x=20,y=105)
 
+def abt_info():
+    messagebox.showinfo("About","Simple calculator is an ordinary calculator.\n"
+                               "this project is done on the basis of python coding\n"
+                                "challenge conducted by CROSSROADS.\n"
+                                "I also thank CROSSROADS TEAM especially Nikhil sir\n"
+                                "for his wonderful tutorial and inspiring words.\n")
+def help_info():
+    messagebox.showinfo("Help","1-> Enter the first number. \n"
+                               "2-> Enter the operation that you wish to do.\n"
+                               "           (+ , - , / , x , √   )\n"
+                               "3-> Enter the second number.\n")
+help_menu = Menu(info_menu)
+info_menu.add_cascade(label=" Help ",menu=help_menu)
+help_menu.add_command(label="About ",command=abt_info)
+help_menu.add_command(label="Help ",command=help_info)
+help_menu.add_command(label="Exit ", command=window.quit)
 
 def button_click(number):
     num = dis_entry.get()
