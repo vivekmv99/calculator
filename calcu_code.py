@@ -6,13 +6,10 @@ from datetime import date
 
 
 window = Tk()
-window.title("Calculator")
+window.title("Magic Calculator")
 window.geometry('320x480')
 window.configure(bg="#282828")
-
-info_menu = Menu(window)
-window.config(menu=info_menu)
-
+window.resizable(width=False,height=False)
 
 myfont_screen = Font(family="verdana",size="40")
 dis_entry = Entry(window,width=8,font=myfont_screen,justify=RIGHT)
@@ -21,8 +18,13 @@ dis_entry.place(x=20,y=30)
 dis_result = Entry(window,width=8,font=myfont_screen,justify=RIGHT)
 dis_result.place(x=20,y=105)
 
+
+info_menu = Menu(window)
+window.config(menu=info_menu)
+
 def abt_info():
-    messagebox.showinfo("About","Simple calculator is an ordinary calculator.\n"
+    messagebox.showinfo("About","Magic calculator is an ordinary calculator. But\n"
+                                 "it comes with a Magic button for finding age and\n"
                                "this project is done on the basis of python coding\n"
                                 "challenge conducted by CROSSROADS.\n"
                                 "I also thank CROSSROADS TEAM especially Nikhil sir\n"
@@ -31,7 +33,11 @@ def help_info():
     messagebox.showinfo("Help","1-> Enter the first number. \n"
                                "2-> Enter the operation that you wish to do.\n"
                                "           (+ , - , / , x , √   )\n"
-                               "3-> Enter the second number.\n")
+                               "3-> Enter the second number.\n"
+                               "4-> Result will displayed on 2nd screen.\n"
+                               "**** HOW TO USE MAGIC BUTTON ❤ ****\n"
+                               "1-> Enter the year when you are born\n"
+                               "2-> And press the magic button ❤\n")
 help_menu = Menu(info_menu)
 info_menu.add_cascade(label=" Help ",menu=help_menu)
 help_menu.add_command(label="About ",command=abt_info)
@@ -45,85 +51,178 @@ def button_click(number):
 
 def button_del():
     dis_entry.delete(0,END)
+    dis_result.delete(first=0, last=100)
 
-def back_space():
-    dis_entry.delete(0,1)
+
 
 
 def add_button():
-    first_number = dis_entry.get()
-    global f_num
-    global operation
-    operation = "addition"
-    f_num = int(first_number)
-    dis_entry.delete(0, END)
+    try:
+        first_number = dis_entry.get()
+        global f_num
+        global operation
+        operation = "addition"
+        f_num = int(first_number)
+        dis_entry.delete(0, END)
+    except:
+        dis_entry.insert(0, "ERROR")
+        dis_result.insert(0, "→")
+        dis_entry.delete(5, END)
+        dis_result.delete(1, END)
+        messagebox.showinfo("Addition operation",
+                            "1-> Enter the first number that you want to  \n"
+                            "Add. \n"
+                            "2-> After that click the add + button.\n"
+                            "3-> Enter the second number that you want Add\n"
+                            "with the first number. \n"
+                            "Then the result will displayed in your\n"
+                            "second screen.")
+        dis_entry.delete(0, END)
+        dis_result.delete(0, END)
 
 def equal_button():
     second_number = dis_entry.get()
     dis_entry.delete(0, END)
-    if operation == "addition":
-        dis_entry.insert(0, str(f_num) + "+" + str(second_number) + "=")
-        dis_result.insert(0, int(f_num) + int(second_number))
-    elif operation == "subtraction":
-        dis_entry.insert(0, str(f_num) + "-" + str(second_number) + "=")
-        dis_result.insert(0, int(f_num) - int(second_number))
-    elif operation == "division":
-        dis_entry.insert(0, str(f_num) + "/" + str(second_number) + "=")
-        dis_result.insert(0, int(f_num) / int(second_number))
-    elif operation == "multiplication":
-        dis_entry.insert(0, str(f_num) + "x" + str(second_number) + "=")
-        dis_result.insert(0, int(f_num) * int(second_number))
-    elif operation == "square root":
-        dis_entry.insert(0, "√" + str(f_num))
-        dis_result.insert(0, int(f_num) ** 0.5)
-    else:
+    try:
+        if operation == "addition":
+            dis_entry.insert(0, str(f_num) + "+" + str(second_number) + "=")
+            dis_result.insert(0, int(f_num) + int(second_number))
+        elif operation == "subtraction":
+            dis_entry.insert(0, str(f_num) + "-" + str(second_number) + "=")
+            dis_result.insert(0, int(f_num) - int(second_number))
+        elif operation == "division":
+            dis_entry.insert(0, str(f_num) + "/" + str(second_number) + "=")
+            dis_result.insert(0, int(f_num) / int(second_number))
+        elif operation == "multiplication":
+            dis_entry.insert(0, str(f_num) + "x" + str(second_number) + "=")
+            dis_result.insert(0, int(f_num) * int(second_number))
+        elif operation == "square root":
+            dis_entry.insert(0, "√" + str(f_num))
+            dis_result.insert(0, int(f_num) ** 0.5)
+        else:
+            dis_result.insert(0, "Error")
+    except:
+        dis_entry.delete(0, END)
+        dis_result.delete(0, END)
+        dis_entry.insert(0, "Error")
         dis_result.insert(0, "Error")
 
 def sub_button():
-    first_number = dis_entry.get()
-    global f_num
-    global operation
-    operation = "subtraction"
-    f_num = int(first_number)
-    dis_entry.delete(0, END)
+    try:
+        first_number = dis_entry.get()
+        global f_num
+        global operation
+        operation = "subtraction"
+        f_num = int(first_number)
+        dis_entry.delete(0, END)
+    except:
+        dis_entry.insert(0, "ERROR")
+        dis_result.insert(0, "→")
+        dis_entry.delete(5, END)
+        dis_result.delete(1, END)
+        messagebox.showinfo("Subtraction operation",
+                            "1-> Enter the first number that you want to  \n"
+                            "Subtract. \n"
+                            "2-> After that click the subtract - button.\n"
+                            "3-> Enter the second number that you want subtract\n"
+                            "with the first number. \n"
+                            "Then the result will displayed in your\n"
+                            "second screen.")
+        dis_entry.delete(0, END)
+        dis_result.delete(0, END)
+
 def div_button():
-    first_number = dis_entry.get()
-    global f_num
-    global operation
-    operation= "division"
-    f_num=int(first_number)
-    dis_entry.delete(0,END)
+    try:
+        first_number = dis_entry.get()
+        global f_num
+        global operation
+        operation= "division"
+        f_num=int(first_number)
+        dis_entry.delete(0,END)
+    except:
+        dis_entry.insert(0, "ERROR")
+        dis_result.insert(0, "→")
+        dis_entry.delete(5, END)
+        dis_result.delete(1, END)
+        messagebox.showinfo("Division operation",
+                            "1-> Enter the first number that you want to  \n"
+                            "Divide. \n"
+                            "2-> After that click the divide / button.\n"
+                            "3-> Enter the second number that you want divide\n"
+                            "with the first number. \n"
+                            "Then the result will displayed in your\n"
+                            "second screen.")
+        dis_entry.delete(0, END)
+        dis_result.delete(0, END)
 
 def mul_button():
-    first_number = dis_entry.get()
-    global f_num
-    global operation
-    operation = "multiplication"
-    f_num=int(first_number)
-    dis_entry.delete(0,END)
+    try:
+        first_number = dis_entry.get()
+        global f_num
+        global operation
+        operation = "multiplication"
+        f_num=int(first_number)
+        dis_entry.delete(0,END)
+    except:
+        dis_entry.insert(0, "ERROR")
+        dis_result.insert(0, "→")
+        dis_entry.delete(5, END)
+        dis_result.delete(1, END)
+        messagebox.showinfo("Multiplication operation",
+                            "1-> Enter the first number that you want to  \n"
+                            "Multiply. \n"
+                            "2-> After that click the Multiply x button.\n"
+                            "3-> Enter the second number that you want multiply\n"
+                            "with the first number. \n"
+                            "Then the result will displayed in your\n"
+                            "second screen.")
+        dis_entry.delete(0, END)
+        dis_result.delete(0, END)
 
 
 def square_bttn():
-    first_number = dis_entry.get()
-    global f_num
-    global operation
-    operation = "square root"
-    f_num = int(first_number)
-    dis_entry.delete(0, END)
+    try:
+        first_number = dis_entry.get()
+        global f_num
+        global operation
+        operation = "square root"
+        f_num = int(first_number)
+        dis_entry.delete(0, END)
+    except:
+        dis_entry.insert(0, "ERROR")
+        dis_result.insert(0, "→")
+        dis_entry.delete(5, END)
+        dis_result.delete(1, END)
+        messagebox.showinfo("Square root operation",
+                            "1-> Enter the number that you want find \n"
+                            "the root of. \n"
+                            "2-> After that click the root √ button.\n"
+                            "Then the result will displayed in your\n"
+                            "second screen.")
+        dis_entry.delete(0, END)
+        dis_result.delete(0, END)
 
 def magic_button():
-    first_numberr = dis_entry.get()
-    f_numm = int(first_numberr)
-    today = date.today()
-    yr = today.year
-    dis_entry.delete(0, END)
-    if f_numm != 0:
-        dis_entry.insert(0, "AGE")
-        dis_result.insert(0, int(yr) - int(f_numm))
-        dis_entry.delete(3, END)
-    else:
-        second_number = dis_entry.get()
-        dis_result.insert(0, "ERROR")
+    try:
+        first_numberr = dis_entry.get()
+        f_numm = int(first_numberr)
+        today = date.today()
+        yr = today.year
+        dis_entry.delete(0, END)
+        if f_numm != 0:
+            dis_entry.insert(0, "AGE")
+            dis_result.insert(0, int(yr) - int(f_numm))
+            dis_entry.delete(3, END)
+        else:
+            second_number = dis_entry.get()
+            dis_result.insert(0, "ERROR")
+    except:
+        messagebox.showinfo("Magic operation","**** HOW TO USE MAGIC BUTTON ❤ ****\n"
+                                    "1-> Enter the year when you are born\n"
+                                    "2-> And press the magic button ❤\n"
+                                    "Then Your Age will displayed in your\n"
+                                    "second screen.")
+
 
 
 
