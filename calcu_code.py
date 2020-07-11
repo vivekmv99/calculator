@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter.font import *
 from tkinter import messagebox
+from datetime import date
 
 
 
@@ -110,9 +111,25 @@ def square_bttn():
     f_num = int(first_number)
     dis_entry.delete(0, END)
 
+def magic_button():
+    first_numberr = dis_entry.get()
+    f_numm = int(first_numberr)
+    today = date.today()
+    yr = today.year
+    dis_entry.delete(0, END)
+    if f_numm != 0:
+        dis_entry.insert(0, "AGE")
+        dis_result.insert(0, int(yr) - int(f_numm))
+        dis_entry.delete(3, END)
+    else:
+        second_number = dis_entry.get()
+        dis_result.insert(0, "ERROR")
+
+
+
 myfont = Font(family="verdana",size="12")
 Button(window, text=" √ ", height=3,bg="#668cff",width=6,fg="black",font=myfont,command=square_bttn).place(x=10,y=196)
-Button(window, text=" <- ", height=3,bg="#668cff",width=7,fg="black",font=myfont,command=back_space).place(x=80,y=196)
+Button(window, text=" ❤ ", height=3,bg="#668cff",width=7,fg="black",font=myfont,command=magic_button).place(x=80,y=196)
 Button(window, text=" / ", height=3,bg="#668cff",width=7,fg="black",font=myfont,command=div_button).place(x=160,y=196)
 Button(window, text=" × ", height=3,bg="#668cff",width=6,fg="black",font=myfont,command=mul_button).place(x=240,y=196)
 Button(window, text=" 7 ", height=3,bg="gray46",width=6,fg="black",font=myfont,command=lambda:button_click(7)).place(x=10,y=253)
