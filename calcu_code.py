@@ -29,15 +29,15 @@ window.config(menu=info_menu)
 
 def abt_info():
     messagebox.showinfo("About","Magic calculator is an ordinary calculator. But\n"
-                                 "it comes with a Magic button for finding age and\n"
-                               "this project is done on the basis of python coding\n"
+                                "it comes with a Magic button for finding age and\n"
+                                "this project is done on the basis of python coding\n"
                                 "challenge conducted by CROSSROADS.\n"
                                 "I also thank CROSSROADS TEAM especially Nikhil sir\n"
                                 "for his wonderful tutorial and inspiring words.\n")
 def help_info():
     messagebox.showinfo("Help","1-> Enter the first number. \n"
                                "2-> Enter the operation that you wish to do.\n"
-                               "           (+ , - , / , x , √   )\n"
+                               "          (+ , - , / , x , √   )\n"
                                "3-> Enter the second number.\n"
                                "4-> Result will displayed on 2nd screen.\n"
                                "**** HOW TO USE MAGIC BUTTON ❤ ****\n"
